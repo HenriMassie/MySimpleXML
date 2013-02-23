@@ -1,5 +1,7 @@
 *.class
+# dossier
 target
+# autres
 *.settings
 *.classpath
 *.project
