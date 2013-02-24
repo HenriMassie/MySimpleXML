@@ -1,6 +1,7 @@
 package dcll.hmas.MySimpleXML;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,28 +23,26 @@ public class ReadXML {
 	 * @throws ValidityException
 	 */
 	public static void main(String[] args) throws ValidityException,
-	ParsingException, IOException {
-		Builder builder = new Builder();
+			ParsingException, IOException {
 		System.out.println(args[0]);
 		try {
 			InputStream ins = new FileInputStream(args[0]);
-			InputStreamReader insr=new InputStreamReader(ins);
-			BufferedReader br=new BufferedReader(insr);
+			InputStreamReader insr = new InputStreamReader(ins);
+			BufferedReader br = new BufferedReader(insr);
 			String ligne;
-			while ((ligne=br.readLine())!=null){
+			while ((ligne = br.readLine()) != null) {
 				System.out.println(ligne);
 			}
 			br.close();
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.toString());
-		};
-/*		ClassLoader cl = ReadXML.class.getClassLoader();
-		InputStream ins = cl.getResourceAsStream(args[0]);
-*/
-		InputStream ins = ReadXML.class.getClassLoader().getResourceAsStream(args[0]);
+		}
+		;
+
 		// lire et analyser le fichier XML
-		Document doc = builder.build(ins);
+		Builder builder = new Builder();
+		File f = new File(args[0]);
+		Document doc = builder.build(f);
 		Element root = doc.getRootElement();
 		System.out.println("Noeud Racine : " + root.getLocalName());
 		// lire fils
@@ -58,5 +57,5 @@ public class ReadXML {
 				System.out.println("Name : " + nameChild.getValue());
 			}
 		}
-		}
+	}
 }
