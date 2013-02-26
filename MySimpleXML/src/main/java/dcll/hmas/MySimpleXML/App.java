@@ -8,6 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Git, Github et Maven, c'est top" );
+        System.out.println( "Git, Github et Maven, c'est trop top" );
     }
 }
